@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import ImgData from '@/data'
 import ImgDataBase64 from '@/data/base64'
 import { Col, Container, Modal, Row } from 'react-bootstrap'
-import { AiOutlinePlusCircle } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlinePlusCircle } from 'react-icons/ai'
 import { FaPeopleArrows } from 'react-icons/fa'
 import Loader from '@/components/loader'
 import axios from 'axios'
@@ -166,13 +166,14 @@ export default Page
 
 function SelectImg({ result, handleChoice, face }) {
     const [isSelect, setIsSelect] = useState(false)
-    const [curImage, setCurImage] = useState(result[0])
+    const [curImage, setCurImage] = useState()
     const handleSelect = (item, keys) => {
         setCurImage(item)
         handleChoice(item, { [`${face}`]: keys })
     }
     return <button className="resImg" onClick={() => setIsSelect(!isSelect)}>
-        <img src={'data:image/png;base64,' + curImage} alt="" />
+        {curImage ?
+            <img src={'data:image/png;base64,' + curImage} alt="" /> : <AiOutlinePlus/>}
         {
             isSelect ? <div className='selectImg'>
                 {

@@ -54,6 +54,14 @@ const ImgData = [
     {
         img: '/14.jpg',
         base64: ''
-    }
+    },
+    {
+        img: '/15.jpg',
+        base64: ''
+    },
+    {
+        img: '/16.jpg',
+        base64: ''
+    },
 ]
 export default ImgData
