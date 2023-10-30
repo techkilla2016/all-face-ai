@@ -1,24 +1,37 @@
-import ImgData from '@/data'
-import Link from 'next/link'
-import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+"use client"
+import React, { useEffect, useState } from 'react'
+import SelectImg from '@/components/SelectImg'
+import Loader from '@/components/loader'
+import Header from '@/components/Header'
+import SwapFace from '@/components/SwapFace'
+import { Card, Col, Container, Row } from 'react-bootstrap'
 
 const Home = () => {
+  const [result, setResult] = useState()
+  const [temp, setTemp] = useState()
+  const [isLoader, setIsLoader] = useState(false)
+  const [dataList, setDataList] = useState({})
   return (
-    <Container>
-      <Row>
-        {
-          ImgData?.map((item, keys) => {
-            return <Col key={keys} xxl={4} lg={4} xl={4} className='py-4' >
-              <Link href={`/${keys}`} className='colBox card'>
-                <img src={item?.img} />
-              </Link>
-            </Col>
-          })
-        }
-
-      </Row>
-    </Container>
+    <>
+      {isLoader ? <Loader /> : ''}
+      <div className='alai-main'>
+        <div className="alai-container">
+          {/* header  */}
+          <Header />
+          <Container>
+            {
+              temp ? <SwapFace temp={temp} data={result} dataList={dataList} setIsLoader={setIsLoader} /> : <>
+                <SelectImg
+                  setTemp={setTemp}
+                  setResult={setResult}
+                  setIsLoader={setIsLoader}
+                  setDataList={setDataList} />
+              </>
+            }
+          </Container>
+        </div>
+      </div>
+    </>
   )
 }
 

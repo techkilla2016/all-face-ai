@@ -45,10 +45,8 @@ const Page = ({ params }) => {
             setResult(res?.data)
             let selectList = {};
             res?.data?.first?.map((_d, key) => {
-                console.log(_d, key)
                 selectList[`${key}`] = 0
             })
-            console.log(selectList)
             setChoiseList(selectList)
             setIsLoader(false)
         }).catch(error => {
@@ -68,7 +66,6 @@ const Page = ({ params }) => {
             image: curImage.split(',')[1],
             map: Object.values(choiseList)
         }).then(res => {
-            console.log(res)
             setResultShow("data:image/png;base64," + res?.data?.result)
             setShow(true)
             setIsLoader(false)
@@ -173,7 +170,7 @@ function SelectImg({ result, handleChoice, face }) {
     }
     return <button className="resImg" onClick={() => setIsSelect(!isSelect)}>
         {curImage ?
-            <img src={'data:image/png;base64,' + curImage} alt="" /> : <AiOutlinePlus/>}
+            <img src={'data:image/png;base64,' + curImage} alt="" /> : <AiOutlinePlus />}
         {
             isSelect ? <div className='selectImg'>
                 {
