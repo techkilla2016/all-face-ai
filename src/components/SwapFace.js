@@ -12,7 +12,7 @@ const SwapFace = ({ temp, data, setIsLoader }) => {
     useEffect(() => {
         let selectList = {};
         data?.first?.map((_d, key) => {
-            selectList[`${key}`] = 0
+            selectList[`${key}`] = -1
         })
         setFaceList(selectList)
 
