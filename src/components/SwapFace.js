@@ -19,9 +19,11 @@ const SwapFace = ({ temp, data, setIsLoader }) => {
     }, [])
 
     const handleGetResult = async () => {
+        // const api = 'https://6c06-103-17-110-127.ngrok-free.app/send';
+        const api = 'https://396e-103-17-110-13.ngrok-free.app/rec';
         try {
             setIsLoader(true)
-            const res = await axios.post('https://6c06-103-17-110-127.ngrok-free.app/send', {
+            const res = await axios.post(api, {
                 image: temp?.choice.split(',')[1],
                 choice: temp?.image.split(',')[1],
                 map: Object.values(faceList)
